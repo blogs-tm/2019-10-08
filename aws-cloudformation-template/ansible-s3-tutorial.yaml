@@ -69,6 +69,9 @@ Resources:
         - !Ref sshSG
       SubnetId:
         Ref: PublicSubnet
+      Tags:
+      - Key: Name
+        Value: control
 
   target:
     Type: AWS::EC2::Instance
@@ -86,6 +89,9 @@ Resources:
         - !Ref sshSG
       SubnetId:
         Ref: PublicSubnet
+      Tags:
+      - Key: Name
+        Value: target
 
   sshSG:
     Type: AWS::EC2::SecurityGroup

@@ -72,6 +72,15 @@ Resources:
       Tags:
       - Key: Name
         Value: control
+      UserData:
+        Fn::Base64: |-
+          #!/bin/bash
+          yum install -y ansible
+          yum install -y git
+          yum install -y epel-release
+          yum install -y python-pip
+          pip install --upgrade pip
+          pip install boto3
 
   target:
     Type: AWS::EC2::Instance

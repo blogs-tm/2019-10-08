@@ -10,6 +10,10 @@
 Ansible Control OS:
   AMI Image Id:
   OS Version: CentOS Linux release 7.6.1810 (Core)
+  UserData:
+    /var/log/messages
+    /var/log/yum.log
+   等を確認
   Ansible:
     インストール方法: yum
     version: ansible 2.4.2.0
@@ -82,6 +86,9 @@ Ansible Target OS: CentOS Linux release 7.6.1810 (Core)
 ## 検証手順
 
 - AWS S3に検証用のバケットを作成する
+- AWS アセス鍵を発行する
 - AWS ClouldFormaionからテンプレートを利用してVPCを起動する
 - Ansible ControlマシーンにSSH接続して秘密鍵を登録する
+- コントロールマシーンからターゲットマシーンに接続できるか確認する
+　ansible all -i 'target-system-id-address,' -u centos -m shell -a 'cat /etc/redhat-release'
 - ターゲットのマシンに対してansible-playbookコマンドを実行する

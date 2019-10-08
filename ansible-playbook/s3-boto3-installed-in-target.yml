@@ -1,0 +1,22 @@
+- hosts: all
+  become: True
+
+  vars:
+    pip_install_packages:
+      - name: pip
+        state: latest
+      - name: boto3
+
+  roles:
+    - role: geerlingguy.pip
+
+  tasks:
+    - name: Simple PUT operation
+      aws_s3:
+        aws_access_key: '{{ aws_access_key_id }}'
+        aws_secret_key: '{{ aws_secret_access_key }}'
+        region: '{{ aws_region }}'
+        bucket: '{{ s3_bucket }}'
+        object: '{{ s3_object_name }}'
+        src: '{{ upload_file_path }}'
+        mode: put

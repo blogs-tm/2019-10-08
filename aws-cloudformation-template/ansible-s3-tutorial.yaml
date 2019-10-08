@@ -70,7 +70,7 @@ Resources:
       SubnetId:
         Ref: PublicSubnet
 
-  control:
+  target:
     Type: AWS::EC2::Instance
     DependsOn: InternetGateway
     Properties:

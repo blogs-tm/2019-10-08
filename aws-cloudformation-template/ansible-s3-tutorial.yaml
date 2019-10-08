@@ -139,7 +139,3 @@ Resources:
         Ref: PublicSubnet
       RouteTableId:
         Ref: PublicRouteTable
-
-Outputs:
-  VpcId:
-    Value: !Ref VPC
